@@ -14,10 +14,10 @@ vim.api.nvim_set_keymap('n', '<C-H>', ':Telescope help_tags<CR>', { silent = tru
 vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { silent = true })
 vim.api.nvim_set_keymap('n', '<leader>r', ':NvimTreeRefresh<CR>', { silent = true })
 
-vim.api.nvim_set_keymap('n', '<F1>', ':BufferLineCyclePrev<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<F2>', ':BufferLineCycleNext<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<F3>', ':BufferLineMovePrev<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<F4>', ':BufferLineMoveNext<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<A-Left>', ':BufferLineCyclePrev<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<A-Right>', ':BufferLineCycleNext<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<A-S-Left>', ':BufferLineMovePrev<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<A-S-Right>', ':BufferLineMoveNext<CR>', { silent = true })
 
 vim.api.nvim_set_keymap("n", "<leader>cc", "<Plug>kommentary_line_default", { silent = true })
 vim.api.nvim_set_keymap("n", "<leader>c", "<Plug>kommentary_motion_default", { silent = true })

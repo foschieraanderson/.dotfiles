@@ -29,6 +29,7 @@ return require('packer').startup(function()
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
   use { 'windwp/nvim-autopairs' }
   use { 'iamcco/markdown-preview.nvim' }
+  use { 'rcarriga/nvim-notify', requires = 'nvim-lua/plenary.nvim'}
   -- Autocomplete
   use { 'neovim/nvim-lspconfig' }
   use { 'williamboman/nvim-lsp-installer', requires = {'neovim/nvim-lspconfig'} }
