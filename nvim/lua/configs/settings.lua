@@ -25,7 +25,8 @@ vim.cmd([[ syntax on ]])
 
 vim.cmd([[ set bg=dark ]])
 vim.cmd([[ set termguicolors ]])
-vim.cmd([[ colorscheme gruvbox ]])
+-- vim.cmd([[ colorscheme gruvbox ]])
+vim.cmd([[ colorscheme dracula ]])
 
 vim.cmd([[
   augroup packer_user_config
