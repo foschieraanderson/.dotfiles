@@ -46,19 +46,19 @@ for _, lsp in ipairs(servers) do
 end
 
 -- TypeScript
--- nvim_lsp.tsserver.setup {
-  -- on_attach = on_attach
--- }
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach
+}
 
 -- Python
--- nvim_lsp.pyright.setup {
-  -- on_attach = on_attach,
-  -- settings = {
-    -- python = {
-      -- analysis = {
-        -- autoSearchPaths = true,
-        -- useLibraryCodeForTypes = true
-      -- }
-    -- }
-  -- }
--- }
+nvim_lsp.pyright.setup {
+  on_attach = on_attach,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true
+      }
+    }
+  }
+}
