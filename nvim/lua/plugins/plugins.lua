@@ -3,7 +3,8 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   -- use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-  use 'Mofiqul/dracula.nvim'
+  -- use 'Mofiqul/dracula.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
   use {
   'nvim-telescope/telescope.nvim',
   requires = { {'nvim-lua/plenary.nvim'} }
@@ -34,7 +35,7 @@ return require('packer').startup(function()
   -- Autocomplete
   use { 'neovim/nvim-lspconfig' }
   use { 'williamboman/nvim-lsp-installer', requires = {'neovim/nvim-lspconfig'} }
-  use { 'glepnir/lspsaga.nvim', requires = {'neovim/nvim-lspconfig'} }
+  use { 'glepnir/lspsaga.nvim', branch = "main", requires = {'neovim/nvim-lspconfig'} }
   use { 'hrsh7th/nvim-compe'}
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'

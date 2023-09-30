@@ -26,7 +26,10 @@ vim.cmd([[ syntax on ]])
 vim.cmd([[ set bg=dark ]])
 vim.cmd([[ set termguicolors ]])
 -- vim.cmd([[ colorscheme gruvbox ]])
-vim.cmd([[ colorscheme dracula ]])
+-- vim.cmd([[ colorscheme dracula ]])
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+require("catppuccin").setup()
+vim.cmd([[ colorscheme catppuccin ]])
 
 vim.cmd([[
   augroup packer_user_config
