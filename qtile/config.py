@@ -3,15 +3,16 @@ import os
 import subprocess
 
 from libqtile import bar, hook, layout, widget
-from libqtile.command import lazy
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
-from libqtile.utils import guess_terminal
+from libqtile.lazy import lazy
+
+# from libqtile.utils import guess_terminal
 
 mod = "mod4"  # SUPER
 mod1 = "mod1"  # ALT
-term = guess_terminal()
+term = "wezterm"
 browser = "vivaldi-stable"
-file_manager = "alacritty -e ranger"
+file_manager = "wezterm start -e yazi"
 
 
 # ===========
@@ -22,7 +23,11 @@ keys = [
     Key([mod], "Return", lazy.spawn(term), desc="Launch terminal"),
     Key([mod], "b", lazy.spawn(browser), desc="Launch web browser"),
     Key([mod], "f", lazy.spawn(file_manager), desc="Launch file manager"),
+    Key([mod], "e", lazy.spawn("thunar"), desc="Launch thunar"),
     Key([mod], "m", lazy.spawn("rofi -show drun"), desc="Launch application menu"),
+    Key([mod, "shift"], "b", lazy.spawn("firejail --appimage .appImage/zen-specific.AppImage"), desc="Launch zend browser"),
+    Key([mod, "shift"], "d", lazy.spawn("firejail --appimage .appImage/Beekeeper-Studio-4.6.2_1.AppImage"), desc="Launch Beekeeper"),
+    Key([mod, "shift"], "a", lazy.spawn(".appImage/Anytype-0.42.4.AppImage"), desc="Launch Anytype"),
     # Rofi
     Key([mod], "r", lazy.spawn("rofi -show drun"), desc="Run application launcher"),
     Key(
@@ -33,15 +38,15 @@ keys = [
     ),
     ## Rofi Power Menu
     Key(
-        [mod, "control"],
-        "Delete",
+        [mod, "shift"],
+        "e",
         lazy.spawn(
-            "rofi -show powermenu -modi 'powermenu:~/.config/rofi/rofi-power-menu --choices=shutdown/reboot/suspend/hibernate/logout'"
+            "rofi -show powermenu -modi 'powermenu:~/.config/rofi/scripts/rofi-power-menu --choices=shutdown/reboot/logout'"
         ),
         desc="Run power menu",
     ),
     ## rofi-network-menu
-    Key([mod, "shift"], "w", lazy.spawn("./.config/rofi/rofi-wifi-menu")),
+    Key([mod, "shift"], "w", lazy.spawn("./.config/rofi/scripts/rofi-wifi-menu")),
     ## Volume settings
     Key(
         [mod, mod1],
@@ -113,7 +118,7 @@ def window_to_previous_screen(qtile, switch_group=False, switch_screen=False):
         group = qtile.screens[i - 1].group.name
         qtile.current_window.togroup(group, switch_group=switch_group)
         if switch_screen is True:
-            qtile.cmd_to_screen(i - 1)
+            qtile.to_screen(i - 1)
 
 
 def window_to_next_screen(qtile, switch_group=False, switch_screen=False):
@@ -122,7 +127,7 @@ def window_to_next_screen(qtile, switch_group=False, switch_screen=False):
         group = qtile.screens[i + 1].group.name
         qtile.current_window.togroup(group, switch_group=switch_group)
         if switch_screen is True:
-            qtile.cmd_to_screen(i + 1)
+            qtile.to_screen(i + 1)
 
 
 keys.extend(
@@ -133,6 +138,7 @@ keys.extend(
             "Right",
             lazy.function(window_to_next_screen, switch_screen=True),
         ),
+        # MOVE WINDOW TO PREVIOUS SCREEN
         Key(
             [mod, "shift"],
             "Left",
@@ -161,9 +167,8 @@ mouse = [
 # =============
 ### GROUPS ###
 # =============
-group_keys = "1234567"
-group_icons = ["󰲋", "", "", "", "", "󱢡", ""]
-# group_icons = ["󰅬", "󰴜", "󰎄", "󰉋", "󱁴"]
+group_keys = "123456789"
+group_icons = ["󰲋", "", "󰎄", "", "", "󰆼", "󱢡", ""]
 groups = [Group(i) for i in group_icons]
 
 for g, k in zip(groups, group_keys):
@@ -269,10 +274,11 @@ widget_defaults = init_widgets_defaults()
 
 def init_widgets_list():
     widgets = [
+        widget.Spacer(length=5, background=theme["base"]),
         widget.TextBox(
-            "󱘊",
-            fontsize=22,
-            padding=8,
+            "",
+            fontsize=18,
+            padding=7,
             background=theme["base"],
             foreground=theme["green"],
         ),
@@ -307,7 +313,7 @@ def init_widgets_list():
             foreground=theme["yellow"],
             mouse_callbacks={"Button1": lazy.spawn("pamixer -t")},
         ),
-        widget.PulseVolume(background=theme["base"], foreground=theme["yellow"]),
+        widget.Volume(background=theme["base"], foreground=theme["yellow"]),
         widget.Sep(linewidth=0, padding=8, background=theme["base"]),
         widget.TextBox(
             "󰸗",
@@ -344,15 +350,15 @@ def init_widgets_list():
             "",
             background=theme["base"],
             foreground=theme["red"],
-            fontsize=22,
-            padding=5,
+            fontsize=18,
+            padding=7,
             mouse_callbacks={
                 "Button1": lazy.spawn(
-                    "rofi -show powermenu -modi 'powermenu:~/.config/rofi/rofi-power-menu --choices=shutdown/reboot/suspend/hibernate/logout'"
+                    "rofi -show powermenu -modi 'powermenu:~/.config/rofi/scripts/rofi-power-menu --choices=shutdown/reboot/logout'"
                 )
             },
         ),
-        widget.Sep(linewidth=0, padding=8, background=theme["base"]),
+        widget.Spacer(length=5, background=theme["base"]),
     ]
     return widgets
 
@@ -432,7 +438,7 @@ auto_minimize = True
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
 
-wmname = "Qtile"
+wmname = "LG3D"
 
 
 # ============
