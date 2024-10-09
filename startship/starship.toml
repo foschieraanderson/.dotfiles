@@ -1,0 +1,348 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+scan_timeout = 30 # default = 30
+command_timeout = 500 # default = 500
+
+format = """
+$os\
+$username\
+$directory\
+$custom\
+$git_branch\
+$git_status\
+$c\
+$rust\
+$golang\
+$nodejs\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+$docker_context\
+$conda\
+[](bg:prev_bg fg:base)\
+$fill\
+[█](bg:base fg:base)\
+([](bg:pink fg:prev_bg)$cmd_duration)\
+([](bg:subtext1 fg:prev_bg)$time[█](bg:none fg:subtext1))\
+$line_break$character"""
+
+# Sets user-defined palette
+palette = "catppuccin_mocha"
+
+# palette tables should be last in the config ⚓️
+[palettes.catppuccin_macchiato]
+rosewater = "#f4dbd6"
+flamingo = "#f0c6c6"
+pink = "#f5bde6"
+mauve = "#c6a0f6"
+red = "#ed8796"
+maroon = "#ee99a0"
+peach = "#f5a97f"
+yellow = "#eed49f"
+green = "#a6da95"
+teal = "#8bd5ca"
+sky = "#91d7e3"
+sapphire = "#7dc4e4"
+blue = "#8aadf4"
+lavender = "#b7bdf8"
+text = "#cad3f5"
+subtext1 = "#b8c0e0"
+subtext0 = "#a5adcb"
+overlay2 = "#939ab7"
+overlay1 = "#8087a2"
+overlay0 = "#6e738d"
+surface2 = "#5b6078"
+surface1 = "#494d64"
+surface0 = "#363a4f"
+base = "#24273a"
+mantle = "#1e2030"
+crust = "#181926"
+
+[palettes.catppuccin_frappe]
+rosewater = "#f2d5cf"
+flamingo = "#eebebe"
+pink = "#f4b8e4"
+mauve = "#ca9ee6"
+red = "#e78284"
+maroon = "#ea999c"
+peach = "#ef9f76"
+yellow = "#e5c890"
+green = "#a6d189"
+teal = "#81c8be"
+sky = "#99d1db"
+sapphire = "#85c1dc"
+blue = "#8caaee"
+lavender = "#babbf1"
+text = "#c6d0f5"
+subtext1 = "#b5bfe2"
+subtext0 = "#a5adce"
+overlay2 = "#949cbb"
+overlay1 = "#838ba7"
+overlay0 = "#737994"
+surface2 = "#626880"
+surface1 = "#51576d"
+surface0 = "#414559"
+base = "#303446"
+mantle = "#292c3c"
+crust = "#232634"
+
+[palettes.catppuccin_latte]
+rosewater = "#dc8a78"
+flamingo = "#dd7878"
+pink = "#ea76cb"
+mauve = "#8839ef"
+red = "#d20f39"
+maroon = "#e64553"
+peach = "#fe640b"
+yellow = "#df8e1d"
+green = "#40a02b"
+teal = "#179299"
+sky = "#04a5e5"
+sapphire = "#209fb5"
+blue = "#1e66f5"
+lavender = "#7287fd"
+text = "#4c4f69"
+subtext1 = "#5c5f77"
+subtext0 = "#6c6f85"
+overlay2 = "#7c7f93"
+overlay1 = "#8c8fa1"
+overlay0 = "#9ca0b0"
+surface2 = "#acb0be"
+surface1 = "#bcc0cc"
+surface0 = "#ccd0da"
+base = "#eff1f5"
+mantle = "#e6e9ef"
+crust = "#dce0e8"
+
+[palettes.catppuccin_mocha]
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
+
+[fill]
+symbol = ' '
+style = 'bold green'
+
+[os]
+disabled = false
+style = "bg:subtext1 fg:surface0"
+format = '[█](bg:surface0 fg:subtext1)[$symbol]($style)'
+
+[os.symbols]
+Alpaquita = " " # nf-fa-bell
+Alpine = " " # nf-linux-alpine
+Amazon = " " # nf-fa-amazon
+Android = " " # nf-dev-android
+Arch = " " # nf-linux-archlinux
+Artix = " " # nf-linux-artix
+CentOS = " " # nf-linux-centos
+Debian = " " # nf-linux-debian
+DragonFly = " " # nf-fae-butterfly
+Emscripten = " " # nf-fa-toggle_on
+EndeavourOS = " " # nf-linux-endeavour
+Fedora = " " # nf-linux-fedora
+FreeBSD = " " # nf-linux-freebsd
+Garuda = "󰛓 " # nf-md-feather
+Gentoo = " " # nf-linux-gentoo
+HardenedBSD = "󰔇  " # nf-md-tennis_ball
+Illumos = " " # nf-linux-illumos
+Linux = " " # nf-linux-tux
+Mabox = "󰆦  " # nf-fa-cube
+Macos = " " # nf-linux-apple
+Manjaro = " " # nf-linux-manjaro
+Mariner = " " # nf-fa-life_saver
+MidnightBSD = " " # nf-fa-moon_o
+Mint = "󰣭  " # nf-md-linux_mint
+NetBSD = " " # nf-fa-flag
+NixOS = " " # nf-linux-nixos
+OpenBSD = " " # nf-linux-openbsd
+OpenCloudOS = " " # nf-fa-cloud
+openEuler = "󰏒  " # nf-md-owl
+openSUSE = " " # nf-linux-opensuse
+OracleLinux = "󰌷  " # nf-md-link
+Pop = " " # nf-linux-pop_os
+Raspbian = " " # nf-linux-raspberry_pi
+Redhat = "󱄛 " # nf-md-redhat
+RedHatEnterprise = " " # nf-linux-redhat
+Redox = "󰀘  " # nf-md-orbit
+Solus = " " # nf-linux-solus
+SUSE = " " # nf-linux-opensuse
+Ubuntu = " " # nf-linux-ubuntu
+Unknown = " " # nf-fa-question_circle
+Void = " " # nf-linux-void
+Windows = " " # nf-fa-windows
+
+[username]
+show_always = false
+style_user = "bg:color_orange fg:color_fg0"
+style_root = "bg:color_orange fg:color_fg0"
+format = '[ $user ]($style)'
+
+[directory]
+style = "bg:blue fg:surface0"
+# fish_style_pwd_dir_length = 2 # default = 0
+format = "[](bg:prev_bg fg:blue)[  $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = "󰝚 "
+"Pictures" = " "
+"www" = "󰲋 "
+
+[custom.giturl]
+# disabled = true
+description = "Display icon for remote Git server"
+command = """
+    GIT_REMOTE=$(command git ls-remote --get-url 2> /dev/null)
+    if [[ "$GIT_REMOTE" =~ "github" ]]; then
+        # GIT_REMOTE_SYMBOL="" # nf-cod-github_inverted
+        GIT_REMOTE_SYMBOL="" # nf-fa-github
+    elif [[ "$GIT_REMOTE" =~ "gitlab" ]]; then
+        GIT_REMOTE_SYMBOL="" # nf-fa-gitlab
+    elif [[ "$GIT_REMOTE" =~ "bitbucket" ]]; then
+        GIT_REMOTE_SYMBOL="" # nf-fa-bitbucket
+    elif [[ "$GIT_REMOTE" =~ "git" ]]; then
+        GIT_REMOTE_SYMBOL="" # nf-fa-git_square
+    else
+        GIT_REMOTE_SYMBOL="󰊢 " # nf-md-git
+        # GIT_REMOTE_SYMBOL="" # nf-fa-unlink
+        # GIT_REMOTE_SYMBOL="󰜛" # nf-md-source_commit_local
+    fi
+    echo "$GIT_REMOTE_SYMBOL "
+"""
+require_repo = true
+when = true
+shell = ["bash", "--noprofile", "--norc"]
+format = "[](bg:prev_bg fg:mauve)[ $output ](bg:mauve fg:surface0)"
+
+[git_branch]
+symbol = ""
+style = "bg:mauve fg:surface0"
+format = "[$symbol $branch(:$remote_name)]($style)"
+
+[git_status]
+style = "bg:mauve fg:surface0"
+staged = " ${count}" # nf-fa-check
+modified = "  ${count}" # nf-fa-circle
+renamed = " 󰗧 ${count}" # nf-md-cursor_text
+untracked = "  ${count}" # nf-fa-question
+deleted = "  ${count}" # nf-fa-remove
+conflicted = "  ${count}" # nf-fa-flag
+stashed = "  ${count}" # nf-fa-inbox
+up_to_date = ""
+ahead = " 󰞙 ${count}" # nf-md-arrow_expand_up
+behind = " 󰞖 ${count}" # nf-md-arrow_expand_down
+diverged = " 󰡏 ${ahead_count} ${behind_count}" # nf-md-arrow_expand_vertical
+# ignore_submodules = true
+format = "[($staged$modified$renamed$untracked$deleted$conflicted$stashed$ahead_behind )]($style)"
+
+[nodejs]
+symbol = ""
+style = "bg:green"
+format = '[](bg:prev_bg fg:green)[[ $symbol( $version) ](fg:surface0 bg:green)]($style)'
+
+[c]
+symbol = " "
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:blue)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:blue)]($style)'
+
+[golang]
+symbol = ""
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:blue)]($style)'
+
+[php]
+symbol = ""
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:blue)]($style)'
+
+[java]
+symbol = " "
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:blue)]($style)'
+
+[kotlin]
+symbol = ""
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:blue)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:blue"
+format = '[[ $symbol( $version) ](fg:color_fg0 bg:blue)]($style)'
+
+[python]
+symbol = ""
+style = "bg:yellow fg:surface0"
+python_binary = [ "python3", "python", "python2" ]
+# pyenv_version_name = true
+format = '[](bg:prev_bg fg:yellow)[ ${symbol} (${pyenv_prefix}${version})]($style)[ (󰏗 $virtualenv) ](bold $style)'
+
+[docker_context]
+symbol = ""
+style = "bg:color_bg3"
+format = '[[ $symbol( $context) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[conda]
+style = "bg:color_bg3"
+format = '[[ $symbol( $environment) ](fg:#83a598 bg:color_bg3)]($style)'
+
+[time]
+disabled = false
+time_format = "%R"
+use_12hr = false
+# time_format = "%H:%M"
+style = "bg:subtext1 fg:surface0"
+format = '[ $time  ]($style)'
+
+[cmd_duration]
+disabled = false
+style = "bg:pink fg:surface0"
+show_milliseconds = false
+show_notifications = false
+format = "[ $duration  ]($style)"
+
+[line_break]
+disabled = false
+
+[character]
+disabled = false
+success_symbol = '[  󰄾](bold fg:green)' #❯
+error_symbol = '[ 󰄽 ](bold fg:red)'
+vimcmd_symbol = '[](bold fg:green)'
+vimcmd_replace_one_symbol = '[](bold fg:mauve)'
+vimcmd_replace_symbol = '[](bold fg:mauve)'
+vimcmd_visual_symbol = '[](bold fg:yellow)'
