@@ -62,6 +62,3 @@ opt.swapfile = false -- disable creates a swapfile
 
 -- cmd
 opt.cmdheight = 2 -- more space in the neovim command line for displaying messages
-
--- Notify
-vim.notify = require("notify")

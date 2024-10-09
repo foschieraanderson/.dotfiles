@@ -1,6 +1,3 @@
--- local status, catppuccin = pcall(require, "catppuccin")
--- if (not status) then return end
-
 return {
 	"catppuccin/nvim",
 	name = "catppuccin",
@@ -48,7 +45,10 @@ return {
 				nvimtree = true,
 				treesitter = true,
 				notify = false,
-				mini = false,
+				mini = {
+                    enabled = true,
+                    indentscope_color = "lavender", -- catppuccin color (eg. `lavender`) Default: text
+                },
 				-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 			},
 		})

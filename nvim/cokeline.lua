@@ -109,8 +109,8 @@ return {
 			},
 			diagnostics = {
 				text = function(buffer)
-					return (buffer.diagnostics.errors ~= 0 and "  " .. buffer.diagnostics.errors)
-						or (buffer.diagnostics.warnings ~= 0 and "  " .. buffer.diagnostics.warnings)
+					return (buffer.diagnostics.errors ~= 0 and " 󰅚 " .. buffer.diagnostics.errors)
+						or (buffer.diagnostics.warnings ~= 0 and "  " .. buffer.diagnostics.warnings)
 						or ""
 				end,
 				fg = function(buffer)
@@ -122,7 +122,7 @@ return {
 			},
 			close_or_unsaved_or_readonly = {
 				text = function(buffer)
-					return (buffer.is_modified and "●") or (buffer.is_readonly and "") or ""
+					return (buffer.is_modified and "●") or (buffer.is_readonly and "") or "󰅖"
 				end,
 				fg = function(buffer)
 					return (buffer.is_modified and theme.yellow) or (buffer.is_readonly and theme.red) or nil
