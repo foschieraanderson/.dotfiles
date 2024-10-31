@@ -1,6 +1,6 @@
 # Dotfiles
 
-Dotfiles [foschiera.dev](www.foschiera.dev)
+Dotfiles [foschiera.dev](https://www.foschiera.dev)
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
